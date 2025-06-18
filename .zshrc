@@ -1,4 +1,9 @@
 # ----------------------
+# SETUP
+# ----------------------
+alias dotfiles='git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
+
+# ----------------------
 # General Settings
 # ----------------------
 export TERM="xterm-kitty"           # Terminal setting for Kitty
@@ -60,11 +65,8 @@ zstyle ':completion:*' menu select      # Enable fzf-tab completion menu
 # ----------------------
 # Environment Variables
 # ----------------------
-export JUXTA="$HOME/coding/Juxta"
 export CF="$HOME/coding/codeforces"
 export SCHOOL="$HOME/Northwestern/24-25/25Spring"
-export USACO="$HOME/coding/USACO"
-export RLIU="$HOME/coding/rliu.xyz"
 
 # ----------------------
 # Functions
