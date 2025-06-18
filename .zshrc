@@ -6,7 +6,7 @@ alias dotfiles='git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 # ----------------------
 # General Settings
 # ----------------------
-export TERM="xterm-kitty"           # Terminal setting for Kitty
+# export TERM="xterm-kitty"           # Terminal setting for Kitty
 export LANG="en_US.UTF-8"           # Default language
 export EDITOR="nvim"                # Set Neovim as the default editor
 export PATH="/usr/local/bin:$PATH"  # Add Homebrew binaries to PATH
@@ -16,26 +16,21 @@ export MallocNanoZone='0'
 
 alias ls='ls -G'
 # ----------------------
-# Plugin Directory
-# ----------------------
-export ZSH_PLUGINS_DIR=~/zsh-plugins
-
-# ----------------------
 # Load Plugins
 # ----------------------
 # Syntax Highlighting
-source $ZSH_PLUGINS_DIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Autosuggestions
-source $ZSH_PLUGINS_DIR/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'  # Suggestion color
 bindkey '^ ' autosuggest-accept         # Ctrl+Space to accept suggestions
 
 # History Substring Search
-source $ZSH_PLUGINS_DIR/zsh-history-substring-search/zsh-history-substring-search.zsh
+source $(brew --prefix)/share/zsh-history-substring-search/zsh-history-substring-search.zsh
 
 # Git Prompt Integration
-source $ZSH_PLUGINS_DIR/zsh-git-prompt/zshrc.sh
+source $(brew --prefix)/opt/zsh-git-prompt/zshrc.sh
 zstyle ':vcs_info:git:*' formats '%F{yellow}[%b]%f' # Show Git branch
 
 # ----------------------
