@@ -9,3 +9,11 @@ source ~/.zshrc
 
 4.
 dotfiles config --local status.showUntrackedFiles no
+
+5.
+dotfiles checkout
+
+6.
+With homebrew installed, in the home directory, run
+
+brew bundle
