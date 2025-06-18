@@ -94,7 +94,3 @@ export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
-
-# Created by `pipx` on 2025-01-21 22:05:05
-export PATH="$PATH:/Users/ruyilan/.local/bin"
-alias dotfiles='git --git-dir=/Users/ruyilan/.dotfiles --work-tree=/Users/ruyilan'
