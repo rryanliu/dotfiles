@@ -94,3 +94,19 @@ export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
+
+#
+# automatically open in tmux
+if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
+  if tmux has-session -t default 2>/dev/null; then
+    tmux attach -t default
+  else
+    # Create a new session named "default", set the cwd,
+    # name the window "term", and run `nvim +terminal` in it.
+    tmux new-session \
+      -s default \
+      -n term \
+      -c "$PWD" \
+      "nvim +terminal"
+  fi
+fi
