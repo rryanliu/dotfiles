@@ -1,23 +1,36 @@
-cf () {
-    # Check if exactly one argument is passed
-    if [ "$#" -ne 1 ]; then
-        echo "Usage: mkcf <directory-name>"
-        return 1
-    fi
+# Add the following to your shell rc (e.g. ~/.zshrc or ~/.bashrc):
+# Define cf as a shell function so cd persists in your shell
 
-    # Create the directory inside $CF
-    cd $CF
-    mcd "$1" && echo "Created directory: $1"
+cf() {
+  if [[ $# -ne 1 ]]; then
+    echo "Usage: cf <directory-name>"
+    return 1
+  fi
 
-    # Check if template.cpp exists
-    local template="$CF/template.cpp"
-    if [ ! -f "$template" ]; then
-        echo "Error: $template does not exist!"
-        return 1
-    fi
+  local CF_DIR="$HOME/coding/codeforces"
+  local folder="$1"
+  local dest_dir="$CF_DIR/$folder"
 
-    # Copy template.cpp to A.cpp, B.cpp, ..., H.cpp
-    for problem in {A..H}; do
-        cp "$template" "$problem.cpp" && echo "Created $problem.cpp"
-    done
+  if [[ -e "$dest_dir" ]]; then
+    echo "Error: directory '$dest_dir' already exists."
+    return 1
+  fi
+  mkdir -p "$dest_dir"
+  echo "Created directory: $dest_dir"
+
+  local template="$CF_DIR/template.cpp"
+  if [[ ! -f "$template" ]]; then
+    echo "Error: template not found at '$template'."
+    return 1
+  fi
+
+  for letter in {A..H}; do
+    cp "$template" "$dest_dir/${letter}.cpp"
+    echo "Created $dest_dir/${letter}.cpp"
+  done
+
+  # Move into the new directory
+  cd "$dest_dir" || return
+  echo "Moved into $dest_dir"
 }
+
