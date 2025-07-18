@@ -94,31 +94,3 @@ export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
-
-#
-# automatically open in tmux
-if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
-  if tmux has-session -t default 2>/dev/null; then
-    tmux attach -t default
-  else
-    # Create a new session named "default", set the cwd,
-    # name the window "term", and run `nvim +terminal` in it.
-    tmux new-session \
-      -s default \
-      -n term \
-      -c "$PWD" \
-#       "nvim +terminal"
-  fi
-fi
-
-# nvim terminal shit. testing
-# Only when running inside `:terminal` in (Neo)Vim
-# ~/.zshrc, **no** if-block around it
-# autoload -Uz add-zsh-hook
-# add-zsh-hook chpwd _vim_sync_PWD
-# function _vim_sync_PWD() {
-#   # 1) emit the OSC 51 escape invisibly
-#   printf '%b' "\e]51;[\"call\",\"Tapi_lcd\",\"%q\"]\007" "$PWD"
-#   # 2) print a visible marker so you know the hook ran
-#   echo "::HOOK:: $PWD" >&2
-# }

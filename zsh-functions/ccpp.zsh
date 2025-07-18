@@ -21,7 +21,7 @@ ccpp() {
   fi
 
   # Compile with strict warnings and sanitizers
-  g++ -Wall -Wconversion -Wfatal-errors -g -std=c++17 -fsanitize=undefined,address "$src" -o "$out"
+  g++ -Wall -Wfatal-errors -g -std=c++17 -fsanitize=undefined,address "$src" -o "$out"
 
   echo "Compiled $src -> $out"
 }
