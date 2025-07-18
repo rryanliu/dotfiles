@@ -22,9 +22,9 @@ ccpp() {
     return 1
   fi
 
+<<<<<<< HEAD
   # Compile with strict warnings and sanitizers, suppress specific warnings
   g++ -Wall \
-      -Wconversion -Wno-sign-conversion \
       -Wfatal-errors \
       -Wno-unused-variable -Wno-unused-const-variable \
       -g -std=c++17 -fsanitize=undefined,address \
