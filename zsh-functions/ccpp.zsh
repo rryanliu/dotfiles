@@ -22,7 +22,6 @@ ccpp() {
     return 1
   fi
 
-<<<<<<< HEAD
   # Compile with strict warnings and sanitizers, suppress specific warnings
   g++ -Wall \
       -Wfatal-errors \
