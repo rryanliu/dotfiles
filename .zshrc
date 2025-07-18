@@ -95,22 +95,6 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
 
-#
-# automatically open in tmux
-if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
-  if tmux has-session -t default 2>/dev/null; then
-    tmux attach -t default
-  else
-    # Create a new session named "default", set the cwd,
-    # name the window "term", and run `nvim +terminal` in it.
-    tmux new-session \
-      -s default \
-      -n term \
-      -c "$PWD" \
-#       "nvim +terminal"
-  fi
-fi
-
 # nvim terminal shit. testing
 # Only when running inside `:terminal` in (Neo)Vim
 # ~/.zshrc, **no** if-block around it
@@ -122,3 +106,35 @@ fi
 #   # 2) print a visible marker so you know the hook ran
 #   echo "::HOOK:: $PWD" >&2
 # }
+
+export PATH=$HOME/.toolbox/bin:$PATH
+
+
+load_nvm() {
+  unset -f load_nvm          # only run once per shell
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+}
+
+# wrap your Node‐related commands
+alias node='load_nvm && node'
+alias npm='load_nvm && npm'
+alias npx='load_nvm && npx'
+alias yarn='load_nvm && yarn'
+
+# wrap tmux
+tm() {
+  if [[ -n "$1" ]]; then
+    session="$1"
+    shift
+    command tmux has-session -t "$session" 2>/dev/null \
+      && command tmux attach -t "$session" "$@" \
+      || command tmux new -s "$session" "$@"
+  else
+    command tm "$@"
+  fi
+}
+
+source /Users/rryanliu/.brazil_completion/zsh_completion
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/amazon-corretto-8.jdk/Contents/Home"

@@ -16,7 +16,6 @@ cf() {
     return 1
   fi
   mkdir -p "$dest_dir"
-  echo "Created directory: $dest_dir"
 
   local template="$CF_DIR/template.cpp"
   if [[ ! -f "$template" ]]; then
@@ -26,11 +25,13 @@ cf() {
 
   for letter in {A..H}; do
     cp "$template" "$dest_dir/${letter}.cpp"
-    echo "Created $dest_dir/${letter}.cpp"
   done
 
   # Move into the new directory
-  cd "$dest_dir" || return
-  echo "Moved into $dest_dir"
+
+  cd "$dest_dir"
+  echo "created contest $folder"
+
+  return
 }
 

@@ -1,3 +1,5 @@
+# Add the following to your zsh-functions folder (e.g. ~/.zsh-functions/ccpp.zsh), then source it in your ~/.zshrc
+
 ccpp() {
   # Ensure at least one argument
   if [[ $# -lt 1 ]]; then
@@ -20,8 +22,13 @@ ccpp() {
     return 1
   fi
 
-  # Compile with strict warnings and sanitizers
-  g++ -Wall -Wconversion -Wfatal-errors -g -std=c++17 -fsanitize=undefined,address "$src" -o "$out"
+  # Compile with strict warnings and sanitizers, suppress specific warnings
+  g++ -Wall \
+      -Wconversion -Wno-sign-conversion \
+      -Wfatal-errors \
+      -Wno-unused-variable -Wno-unused-const-variable \
+      -g -std=c++17 -fsanitize=undefined,address \
+      -o "$out" "$src"
 
   echo "Compiled $src -> $out"
 }
