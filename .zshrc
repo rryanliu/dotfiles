@@ -123,6 +123,3 @@ tm() {
     command tm "$@"
   fi
 }
-
-source /Users/rryanliu/.brazil_completion/zsh_completion
-export JAVA_HOME="/Library/Java/JavaVirtualMachines/amazon-corretto-8.jdk/Contents/Home"
