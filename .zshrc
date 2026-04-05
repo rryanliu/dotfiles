@@ -61,7 +61,7 @@ zstyle ':completion:*' menu select      # Enable fzf-tab completion menu
 # Environment Variables
 # ----------------------
 export CF="$HOME/coding/codeforces"
-export SCHOOL="$HOME/Northwestern/24-25/25Spring"
+export SCHOOL="$HOME/Northwestern/25-26/26Spring"
 
 # ----------------------
 # Functions
@@ -98,18 +98,18 @@ eval "$(pyenv init -)"
 export PATH=$HOME/.toolbox/bin:$PATH
 
 
-load_nvm() {
-  unset -f load_nvm          # only run once per shell
-  export NVM_DIR="$HOME/.nvm"
-  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-}
-
-# wrap your Node‐related commands
-alias node='load_nvm && node'
-alias npm='load_nvm && npm'
-alias npx='load_nvm && npx'
-alias yarn='load_nvm && yarn'
+# load_nvm() {
+#   unset -f load_nvm          # only run once per shell
+#   export NVM_DIR="$HOME/.nvm"
+#   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+#   [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+# }
+# 
+# # wrap your Node‐related commands
+# alias node='load_nvm && node'
+# alias npm='load_nvm && npm'
+# alias npx='load_nvm && npx'
+# alias yarn='load_nvm && yarn'
 
 # wrap tmux
 tm() {
